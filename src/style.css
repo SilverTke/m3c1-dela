@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+}
+
+.stickers {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+
+.sticker {
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+}
+
+input {
+	border: 1px solid black;
+}

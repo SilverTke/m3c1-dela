@@ -20,6 +20,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
          <img src="/ferris.png" alt="Ferris, la mascota de Rust, un cangrejo">
          <input type="number">
        </div>
+       <div class="sticker">
+         <img src="/dash.png">
+         <input type="number">
+       </div>
       </div>
      <p id="stickerCount">Llevas 0 stickers</p>
    </section>

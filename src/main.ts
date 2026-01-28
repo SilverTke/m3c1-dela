@@ -27,6 +27,46 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       </div>
      <p id="stickerCount">Llevas 0 stickers</p>
    </section>
+   <section>
+    <h1>¡Contraseña!</h1>
+    <div id="passwordInput">
+       <select>
+         <option value="1">1</option>
+         <option value="2">2</option>
+         <option value="3">3</option>
+         <option value="4">4</option>
+         <option value="5">5</option>
+         <option value="6">6</option>
+         <option value="7">7</option>
+         <option value="8">8</option>
+         <option value="9">9</option>
+       </select>
+       <select>
+         <option value="1">1</option>
+         <option value="2">2</option>
+         <option value="3">3</option>
+         <option value="4">4</option>
+         <option value="5">5</option>
+         <option value="6">6</option>
+         <option value="7">7</option>
+         <option value="8">8</option>
+         <option value="9">9</option>
+       </select>
+       <select>
+         <option value="1">1</option>
+         <option value="2">2</option>
+         <option value="3">3</option>
+         <option value="4">4</option>
+         <option value="5">5</option>
+         <option value="6">6</option>
+         <option value="7">7</option>
+         <option value="8">8</option>
+         <option value="9">9</option> 
+       </select>
+     </div>
+     <button id="passSubmit">Ingresar</button>
+     <p id="passResult"></p>
+   </section>
  </main> 
 `;
 // ¿El gato tiene borde?
@@ -81,3 +121,34 @@ for (const input of inputs) {
     }
   });
 }
+
+// ¿Contraseña? (Guardada como un array para ser manipulada más fácilmente)
+let password = [1, 1, 1];
+let resultP = document.querySelector<HTMLParagraphElement>("#passResult")!;
+
+// Los inputs de la contraseña (esta vez los convertimos en array directamente)
+const passwordInputs = Array.from(
+  document.querySelectorAll<HTMLSelectElement>("#passwordInput select"),
+);
+
+for (const [index, digit] of passwordInputs.entries()) {
+  digit.addEventListener("change", () => {
+    const selection = Array.from(digit.options).find((d) => d.selected);
+    if (selection) {
+      password[index] = Number.parseInt(selection.value, 10);
+    }
+  });
+}
+
+document
+  .querySelector<HTMLButtonElement>("#passSubmit")!
+  .addEventListener("click", () => {
+    const pass = password.map((n) => n.toString()).join("");
+    if (pass === "911") {
+      resultP.textContent = "Password 1 correcto";
+    } else if (pass === "714") {
+      resultP.textContent = "Password 2 correcto";
+    } else {
+      resultP.textContent = "Password incorrecto";
+    }
+  });
